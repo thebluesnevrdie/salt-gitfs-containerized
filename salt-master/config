@@ -1,0 +1,12 @@
+auto_accept: True
+
+fileserver_backend:
+  - git
+
+gitfs_remotes:
+  - ssh://gogs@gogs/ops/config-mgmt-test.git
+
+gitfs_root: states
+
+ext_pillar:
+  - git: master gogs@gogs:ops/config-mgmt-test.git root=pillar

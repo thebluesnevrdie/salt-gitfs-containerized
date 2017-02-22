@@ -1,0 +1,32 @@
+version: '2'
+services:
+  salt-master:
+    image: thebluesnevrdie/salt-master
+    ports:
+      - "4505:4505"
+      - "4506:4506"
+    volumes:
+      - ./salt-master/root-ssh:/root/.ssh
+      - ./salt-master/config:/etc/salt/master
+      - ./salt-master/pki:/etc/salt/pki
+    links:
+      - gogs
+  gogs:
+    image: thebluesnevrdie/gogs
+    ports:
+      - "80:3000"
+      - "22:22"
+    volumes:
+      - ./gogs/config:/etc/gogs/conf/app.ini
+      - ./gogs/repositories:/home
+    links:
+      - gogs-db
+  gogs-db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=gogs
+      - POSTGRES_PASSWORD=abcd1234
+    volumes:
+      - ./gogs-db/data:/var/lib/postgresql/data
