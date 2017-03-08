@@ -1,2 +1,4 @@
 Host gogs*
    StrictHostKeyChecking no
+   Port 2222
+   

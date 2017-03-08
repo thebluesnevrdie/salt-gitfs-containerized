@@ -365,7 +365,7 @@ fi-FI = fi
 [highlight.mapping]
 
 [other]
-SHOW_FOOTER_BRANDING = false
+SHOW_FOOTER_BRANDING = true
 ; Show version information about gogs and go in the footer
 SHOW_FOOTER_VERSION  = true
 
